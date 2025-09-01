@@ -29,4 +29,4 @@ Sell stocks:
 Enables customers to sell stocks they own. It updates the stock quantity and maintains sale history for the customer.
 
 Persistence:
-Data Storage: Utilizes file handling to store stock and customer information persistently. Data is stored oracle database tables, which are read and written upon program execution.)
+Data Storage: Utilizes file handling to store stock and customer information persistently. Data is stored oracle database tables, which are read and written upon program execution.

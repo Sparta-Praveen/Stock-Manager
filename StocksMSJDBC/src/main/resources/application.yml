@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: StocksMSJDBC
+server:
+ port: 8091
+eureka:
+ client:
+  service-url:
+   defaultZone: http://localhost:8082/eureka/
+spring.datasource.url: jdbc:oracle:thin:@localhost:1521:orcl
+spring.datasource.username: system 
+spring.datasource.password: Oracle#19c
+spring.datasource.driver-class-name: oracle.jdbc.driver.OracleDriver

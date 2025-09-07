@@ -1,0 +1,20 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: CustomerMSJDBC
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: 'system'
+    password: Oracle#19c
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+server:
+  port: 8085
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka/
+

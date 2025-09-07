@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: TransactionMSJDBC
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: 'system'
+    password: Oracle#19c
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+server:
+  port: 8086
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka/

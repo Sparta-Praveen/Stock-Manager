@@ -1,0 +1,613 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+
+.send-off-screen {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.demo-oracle-icon {
+  width:137px;
+  height:18px;
+  content:url("images/oracle_logo.svg")
+}
+
+html:not([dir="rtl"]) .demo-oracle-icon {
+  padding-right:4px
+}
+
+html[dir="rtl"] .demo-oracle-icon {
+  padding-left:4px
+}
+
+.demo-oracle-icon:before {
+  display:inline
+}
+
+.demo-appheader-avatar {
+  width:24px;
+  height:24px
+}
+
+.demo-appheader-avatar:before {
+  content:url("images/avatar_24px.png")
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .demo-appheader-avatar:before {
+      content:url("images/avatar_24px_2x.png");
+      -webkit-transform:translate(-25%, -25%) scale(0.5);
+      transform:translate(-25%, -25%) scale(0.5)
+  }
+}
+
+/* logo stock manager */
+.app-title-brand {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 2.2em;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #1976d2;
+  background: linear-gradient(90deg, #1976d2 40%, #4fc3f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding: 0 0 0 2px;
+  border-bottom: 3px solid #e3e8f0;
+  display: inline-block;
+  border-radius: 0 0 7px 7px;
+  padding-bottom: 8px;
+}
+
+
+/* Navbar/top area styling */
+/* Navigation Bar Area */
+.oj-web-applayout-navbar {
+  background: linear-gradient(90deg, #e3f0fd 70%, #f9fafc 100%);
+  border-bottom: 2px solid #b6d8f5;
+  box-shadow: 0 3px 14px #e8eff7a0;
+  padding-top: 2px;
+  padding-bottom: 6px;
+  min-height: 52px;
+}
+
+/* Tab Bar Layout */
+.oj-tab-bar {
+  background: transparent !important;
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: none;
+  font-size: 1.15em;
+}
+
+.oj-tab-bar li.oj-tabbar-item {
+  margin-right: 22px;
+  margin-left: 0;
+  transition: background 0.16s, box-shadow 0.16s;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.oj-tab-bar li.oj-tabbar-item a {
+  padding: 10px 28px 9px 28px !important;
+  color: #37628c;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 10px 10px 0 0;
+  letter-spacing: 0.5px;
+  background: none;
+  transition: color 0.15s, background 0.19s;
+}
+
+/* Inactive Hover */
+.oj-tab-bar li.oj-tabbar-item:not(.oj-selected) a:hover {
+  background: #dbefff;
+  color: #125ea9;
+  box-shadow: 0 2px 12px #e3e3e3b0;
+}
+
+/* Active Tab */
+.oj-tab-bar li.oj-tabbar-item.oj-selected,
+.oj-tab-bar li.oj-tabbar-item.oj-selected a {
+  background: #fff !important;
+  color: #1976d2 !important;
+  font-weight: 700;
+  border-bottom: 2px solid #1976d2;
+  box-shadow: 0 7px 25px #dfeeff70;
+  z-index: 2;
+}
+
+.oj-tab-bar .oj-tabbar-item.oj-disabled,
+.oj-tab-bar .oj-tabbar-item.oj-disabled a {
+  color: #b0b0b2 !important;
+  pointer-events: none;
+  opacity: 0.66;
+}
+
+/* Active tab underline effect – bar that smoothly slides on select */
+.oj-tab-bar li.oj-tabbar-item.oj-selected:after {
+  content: "";
+  display: block;
+  width: 70%;
+  margin: 6px auto 0;
+  border-radius: 99px;
+  border-bottom: 4px solid #1976d2;
+}
+
+.oj-tab-bar li.oj-tabbar-item:not(.oj-selected):after {
+  content: "";
+  display: block;
+  width: 70%;
+  margin: 6px auto 0;
+  border-bottom: 3.5px solid #ffffff00; /* invisible and no shift */
+}
+
+.custom-modal {
+    /* covers the whole screen - darken background */
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1002;
+}
+
+.custom-modal-content {
+    background: rgba(251, 249, 248, 1);
+    border-radius: 10px;
+    max-width: 440px;
+    min-width: 320px;
+    margin: 40px auto 0;
+    padding: 32px;
+    box-shadow: 0 8px 48px rgb(0 0 0 / 18%);
+    position: relative;
+    top: 12vh;
+    animation: modalFadeIn 0.25s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: scale(1.05);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+.custom-modal-title {
+    font-size: 1.35em;
+    margin-bottom: 20px;
+    letter-spacing: .01em;
+}
+
+.custom-modal-field {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.custom-modal-field label {
+    flex: 0 0 130px;
+    color: #222;
+    font-weight: 500;
+}
+
+.custom-modal-field input {
+    flex: 1 1 180px;
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.custom-modal-actions {
+    text-align: right;
+    margin-top: 26px;
+}
+
+.custom-modal-confirm {
+    background: #1565c0;
+    color: #fff;
+    padding: 7px 22px;
+    border-radius: 4px;
+    border: none;
+    margin-right: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.custom-modal-confirm:hover {
+    background: #1976d2;
+}
+
+.custom-modal-cancel {
+    padding: 7px 22px;
+    border-radius: 4px;
+    border: none;
+    background: #eee;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.custom-modal-cancel:hover {
+    background: #e3e3e3;
+}
+
+.custom-modal-error {
+    color: #d32f2f;
+    min-height: 20px;
+    margin: 7px 0 0 0;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* Show dialog */
+.custom-modal[style*="display: block"] {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.admin-toolbar {
+  margin: 16px 0 24px 0;
+  display: flex;
+  gap: 18px;
+}
+
+.crud-btn {
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.crud-btn:hover, .crud-btn:focus {
+  background-color: #1565c0;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 15px;
+  box-shadow: 0 2px 16px #ebebeb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.styled-table th, .styled-table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #e3e3e3;
+  text-align: left;
+}
+.styled-table th {
+  background: #f5f9fe;
+  color: #1976d2;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.styled-table tr:hover {
+  background: #f4f7fa;
+}
+.styled-table tr:last-child td {
+  border-bottom: none;
+}
+.styled-table td {
+  color: #20262b;
+}
+
+.project-about {
+  max-width: auto;
+  margin: 38px auto 0 auto;
+  background: #fff;
+  border-radius: 9px;
+  padding: 32px 36px 28px 36px;
+  box-shadow: 0 2px 20px #e3e3e3, 0 3px 18px #f4f6f8;
+  font-size: 16px;
+  color: #213547;
+}
+.project-about h1 {
+  font-size: 2em;
+  color: #1976d2;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 1.5px;
+}
+.about-section-title {
+  color: #1565c0;
+  font-size: 1.18em;
+  font-weight: 600;
+  margin: 24px 0 7px 0;
+  border-bottom: 2px solid #e3e8f0;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+.project-about b {
+  color: #333;
+  font-weight: 500;
+}
+.project-about ul {
+  padding-left: 24px;
+  margin-top: 7px;
+}
+.project-about li {
+  margin-bottom: 7px;
+}
+
+.page-header {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 2.2em;
+  color: #1976d2;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 24px 0 26px 0;
+  padding-left: 2px;
+  border-bottom: 3px solid #e3e8f0;
+  display: inline-block;
+  line-height: 1.12;
+  background: linear-gradient(90deg, #f5f9fe 75%, transparent 100%);
+  border-radius: 0 0 7px 7px;
+  padding-bottom: 7px;
+}
+
+
+.auth-container {
+  max-width: 410px;
+  margin: 58px auto 0 auto;
+  background: #fff;
+  border-radius: 11px;
+  box-shadow: 0 4px 24px #e3e7f2;
+  padding: 38px 38px 28px 38px;
+}
+
+.auth-header {
+  font-size: 2.1em;
+  color: #1976d2;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.auth-label {
+  color: #1976d2;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  font-size: 1.01em;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 11px 10px;
+  margin-bottom: 19px;
+  border: 1px solid #c5d7ea;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border 0.13s;
+  outline: none;
+}
+
+.auth-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #e3f0fd;
+}
+
+.auth-btn-main {
+  background: #1976d2;
+  border: none;
+  color: #fff;
+  font-size: 1.18em;
+  font-weight: 550;
+  border-radius: 5px;
+  padding: 12px 0;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 7px;
+  transition: background 0.17s;
+}
+
+.auth-btn-main:hover, .auth-btn-main:focus {
+  background: #1565c0;
+}
+
+.auth-link-row {
+  text-align: center;
+  margin-top: 23px;
+  font-size: 1.07em;
+}
+
+.auth-link-row a {
+  color: #1976d2;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.auth-link-row a:hover {
+  text-decoration: underline;
+}
+
+.auth-error {
+  color: #d32f2f;
+  min-height: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-success {
+  color: #1b810a;
+  min-height: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .auth-container { padding: 15px 7vw; }
+}
+
+/* Customer/Admin profile styling */
+.profile-dialog-body {
+  background: #fff;
+  border-radius: 10px;
+  padding: 26px 26px 10px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-field-label {
+  font-size: 1em;
+  color: #1976d2;
+  font-weight: 600;
+  margin-bottom: 3px;
+  letter-spacing: .2px;
+}
+
+.profile-dialog-row {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-bottom: 2px;
+}
+
+.profile-dialog-value {
+  color: #213547;
+  font-size: 1.07em;
+  font-weight: 500;
+  letter-spacing: .1px;
+  background: #f6faff;
+  border-radius: 5px;
+  padding: 3px 11px;
+}
+
+.profile-dialog-title {
+  color: #125ea9;
+  font-weight: 750;
+  font-size: 1.38em;
+  margin-bottom: 15px;
+  letter-spacing: 1.1px;
+  text-align: center;
+}
+
+.profile-dialog-error {
+  color: #d32f2f;
+  font-size: 1.01em;
+  font-weight: 500;
+  text-align: center;
+  margin: 9px 0;
+}
+
+/* sell and buy button styling */
+.buy-btn, .sell-btn {
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 22px;
+  margin: 2px 2px 2px 0;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #ececec60;
+  transition: background 0.13s, box-shadow 0.18s;
+  outline: none;
+  min-width: 76px;
+}
+
+/* Buy (primary blue) */
+.buy-btn {
+  background: linear-gradient(90deg, #2189ff 70%, #1565c0 100%);
+}
+.buy-btn:hover, .buy-btn:focus {
+  background: linear-gradient(90deg, #1976d2 75%, #174c93 100%);
+  box-shadow: 0 4px 20px #d6e6fd80;
+}
+
+/* Sell (red) */
+.sell-btn {
+  background: linear-gradient(90deg, #e95c5c 70%, #b11616 100%);
+}
+.sell-btn:hover, .sell-btn:focus {
+  background: linear-gradient(90deg, #ba2323 80%, #960909 100%);
+  box-shadow: 0 4px 18px #f5dada70;
+}
+
+/* adding the style to the confirm and cancel buttons */
+.buy-sell-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.buy-sell-volume {
+  width: 92px;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1.5px solid #c5d7ea;
+  padding: 8px;
+  margin-right: 2px;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.18s;
+}
+.buy-sell-volume:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #e3f0fd;
+}
+
+.buy-sell-confirm {
+  background: linear-gradient(90deg, #1976d2 70%, #1565c0 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background 0.13s, box-shadow 0.13s;
+  box-shadow: 0 3px 11px #e6e6fa30;
+}
+.buy-sell-confirm:hover, .buy-sell-confirm:focus {
+  background: linear-gradient(90deg, #1565c0 75%, #174c93 100%);
+  box-shadow: 0 5px 20px #dbe9fc60;
+}
+
+.buy-sell-cancel {
+  background: #fafbfc;
+  color: #444;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 7px 14px;
+  margin-left: 3px;
+  cursor: pointer;
+  transition: background 0.12s, border 0.12s;
+}
+.buy-sell-cancel:hover, .buy-sell-cancel:focus {
+  background: #eee;
+  border: 1px solid #b6c4d8;
+}

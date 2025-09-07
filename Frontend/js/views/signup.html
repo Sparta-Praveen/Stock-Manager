@@ -1,0 +1,33 @@
+<div class="oj-hybrid-padding">
+    <form class="auth-container" data-bind="submit: signup" novalidate>
+        <div class="auth-header">Sign Up</div>
+
+        <div class="auth-success" data-bind="visible: successMsg, text: successMsg"></div>
+        <div class="auth-error" data-bind="visible: errorMsg, text: errorMsg"></div>
+
+        <label class="auth-label" for="firstName">First Name</label>
+        <input id="firstName" class="auth-input" type="text" data-bind="value: firstName" required />
+
+        <label class="auth-label" for="lastName">Last Name</label>
+        <input id="lastName" class="auth-input" type="text" data-bind="value: lastName" required />
+
+        <label class="auth-label" for="signup-email">Email</label>
+        <input id="signup-email" class="auth-input" type="email" data-bind="value: emailId" required />
+
+        <label class="auth-label" for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" class="auth-input" type="tel" data-bind="value: phoneNumber" required />
+
+        <label class="auth-label" for="signup-password">Password</label>
+        <input id="signup-password" class="auth-input" type="password" data-bind="value: password" required />
+
+        <label class="auth-label" for="signup-confirm">Confirm Password</label>
+        <input id="signup-confirm" class="auth-input" type="password" data-bind="value: confirmPassword" required />
+
+        <button class="auth-btn-main" type="submit" data-bind="disable: isLoading">Sign Up</button>
+
+        <div class="auth-link-row">
+            Already have an account?
+            <a href="javascript:void(0)" data-bind="click: goToLogin">Sign In</a>
+        </div>
+    </form>
+</div>

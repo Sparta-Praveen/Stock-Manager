@@ -1,0 +1,118 @@
+<div class="oj-hybrid-padding">
+    <h1 class="page-header">Inventory</h1>
+
+    <div data-bind="visible: isLoading">Loading...</div>
+    <div style="color:#d32f2f" data-bind="visible: errorMsg, text: errorMsg"></div>
+    <div style="color:#2e7d32" data-bind="visible: successMsg, text: successMsg"></div>
+
+    <!-- Admin toolbar (visible only for admins) -->
+    <div class="admin-toolbar" data-bind="visible: isAdmin" style="margin:12px 0; display:flex; gap:8px;">
+        <button type="button" class="crud-btn" data-bind="click: showAddDialog">Add New Stock</button>
+        <button type="button" class="crud-btn" data-bind="click: showUpdateDialog">Update Stock</button>
+        <button type="button" class="crud-btn" data-bind="click: showDeleteDialog">Delete Stock</button>
+        <button type="button" class="crud-btn" data-bind="click: fetchAllStocks">Fetch All Stocks</button>
+    </div>
+
+    <!-- Admin Stock CRUD Dialog (hidden by default) -->
+    <div id="adminCrudDialog" class="custom-modal">
+        <div class="custom-modal-content">
+            <h3 class="custom-modal-title" data-bind="text: dialogTitle"></h3>
+            <form data-bind="submit: submitDialog">
+                <!-- Add/Update fields -->
+                <div data-bind="visible: dialogMode() !== 'delete'">
+                    <div class="custom-modal-field">
+                        <label>Stock ID:</label>
+                        <input type="number"
+                            data-bind="value: dialogStock.stockId, disable: dialogMode() === 'update'" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Stock Name:</label>
+                        <input type="text" data-bind="value: dialogStock.stockName" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Price:</label>
+                        <input type="number" step="0.01" data-bind="value: dialogStock.stockPrice" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Volume:</label>
+                        <input type="number" data-bind="value: dialogStock.stockVolume" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Listed Price:</label>
+                        <input type="number" step="0.01" data-bind="value: dialogStock.listedPrice" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Listed Date (yyyy-mm-dd):</label>
+                        <input type="date" data-bind="value: dialogStock.listedDate" />
+                    </div>
+                    <div class="custom-modal-field">
+                        <label>Stock Exchange:</label>
+                        <input type="text" data-bind="value: dialogStock.listedExchange" />
+                    </div>
+                </div>
+                <div data-bind="visible: dialogMode() === 'delete'" style="margin:20px 0;">
+                    <p>Are you sure you want to delete stock <b data-bind="text: dialogStock.stockId"></b>?</p>
+                </div>
+                <div class="custom-modal-error" data-bind="visible: dialogError, text: dialogError"></div>
+                <div class="custom-modal-actions">
+                    <button type="submit" data-bind="text: dialogMode() === 'delete' ? 'Delete' : 'Confirm'"
+                        class="custom-modal-confirm"></button>
+                    <button type="button" data-bind="click: closeDialog" class="custom-modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="styled-table" border="1" cellspacing="0" cellpadding="6"
+        style="width:100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Stock ID</th>
+                <th>Stock Name</th>
+                <th>Price</th>
+                <th>Volume</th>
+                <th>Listed Price</th>
+                <th>Listed Date</th>
+                <th>Stock Exchange</th>
+                <!-- Only show Action header for customers -->
+                <!-- ko if: isCustomer -->
+                <th>Action</th>
+                <!-- /ko -->
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: rows">
+            <tr>
+                <td data-bind="text: stockId"></td>
+                <td data-bind="text: stockName"></td>
+                <td data-bind="text: stockPrice"></td>
+                <td data-bind="text: stockVolume"></td>
+                <td data-bind="text: listedPrice"></td>
+                <td data-bind="text: listedDate"></td>
+                <td data-bind="text: listedExchange"></td>
+
+                <!-- Only show Buy for customers -->
+                <!-- ko if: $parent.isCustomer -->
+                <td>
+                    <!-- Show Buy button when not editing -->
+                    <!-- ko ifnot: _editing -->
+                    <button type="button" class="buy-btn" data-bind="click: $parent.startBuy">Buy</button>
+                    <!-- /ko -->
+
+                    <!-- Inline buy UI when editing -->
+                    <!-- ko if: _editing -->
+                    <span class="buy-sell-row">
+                        <input type="number" min="1" step="1" class="buy-sell-volume" placeholder="Volume"
+                            data-bind="value: _buyVolume, enable: !_isBuying()">
+                        <button type="button" class="buy-sell-confirm"
+                            data-bind="click: $parent.confirmBuy, enable: !_isBuying()">Confirm</button>
+                        <button type="button"  class="buy-sell-cancel" data-bind="click: $parent.cancelBuy, enable: !_isBuying()">Cancel</button>
+                        <span data-bind="visible: _isBuying" style="margin-left:8px;">Processing…</span>
+                    </span>
+                    <div style="color:#d32f2f; margin-top:4px;" data-bind="visible: _error, text: _error"></div>
+                    <!-- /ko -->
+                </td>
+                <!-- /ko -->
+            </tr>
+        </tbody>
+    </table>
+</div>

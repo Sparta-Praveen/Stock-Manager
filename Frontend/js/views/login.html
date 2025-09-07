@@ -1,0 +1,30 @@
+<!-- <div class="oj-hybrid-padding">
+    <h1>Login Page</h1>
+    <div>
+        Email: <input type="email" data-bind="value: email"><br>
+        Password: <input type="password" data-bind="value: password"><br>
+        <button type="button" data-bind="click: login">Login</button>
+    </div>
+</div> -->
+
+<div class="oj-hybrid-padding">
+  <form class="auth-container" data-bind="submit: login" novalidate>
+    <div class="auth-header">Sign In</div>
+
+    <div data-bind="visible: isLoading">Loading...</div>
+    <div class="auth-error" data-bind="visible: errorMsg, text: errorMsg"></div>
+
+    <label class="auth-label" for="login-email">Email</label>
+    <input id="login-email" type="email" class="auth-input" autocomplete="email" data-bind="value: email" required />
+
+    <label class="auth-label" for="login-password">Password</label>
+    <input id="login-password" type="password" class="auth-input" autocomplete="current-password" data-bind="value: password" required />
+
+    <button class="auth-btn-main" type="submit" data-bind="disable: isLoading, click: login">Login</button>
+
+    <div class="auth-link-row">
+      New user?
+      <a href="javascript:void(0)" data-bind="click: goToSignup">Sign Up</a>
+    </div>
+  </form>
+</div>

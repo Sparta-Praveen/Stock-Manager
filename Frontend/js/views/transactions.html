@@ -1,0 +1,37 @@
+<!--
+ Copyright (c) 2014, 2025, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1 class="page-header">Transactions</h1>
+
+  <div data-bind="visible: isLoading">Loading...</div>
+  <div style="color:#d32f2f" data-bind="visible: errorMsg, text: errorMsg"></div>
+  <div class="oj-text-color-secondary" style="margin:12px 0" data-bind="visible: hasNoHoldings, text: noDataMsg"></div>
+
+  <table class="styled-table" border="1" cellspacing="0" cellpadding="6" style="width:100%; border-collapse: collapse;" data-bind="visible: rows().length > 0">
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Stock ID</th>
+        <th>Customer ID</th>
+        <th>Transaction Type</th>
+        <th>Transaction Price</th>
+        <th>Volume</th>
+        <th>Transaction Time</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: rows">
+      <tr>
+        <td data-bind="text: transactionId"></td>
+        <td data-bind="text: stockId"></td>
+        <td data-bind="text: customerId"></td>
+        <td data-bind="text: transactionType"></td>
+        <td data-bind="text: transactionPrice"></td>
+        <td data-bind="text: volume"></td>
+        <td data-bind="text: $parent.formatDateTime(transactionTime)"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

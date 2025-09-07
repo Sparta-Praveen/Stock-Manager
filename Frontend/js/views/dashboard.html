@@ -1,0 +1,61 @@
+<!--
+ Copyright (c) 2014, 2025, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+
+
+<div class="oj-hybrid-padding">
+  <h1 class="page-header">Stocks Portfolio</h1>
+
+  <div data-bind="visible: isLoading">Loading...</div>
+  <div style="color:#d32f2f" data-bind="visible: errorMsg, text: errorMsg"></div>
+  <div style="color:#2e7d32" data-bind="visible: successMsg, text: successMsg"></div>
+  <div class="oj-text-color-secondary" style="margin:12px 0" data-bind="visible: hasNoHoldings, text: noDataMsg"></div>
+
+  <table class="styled-table" border="1" cellspacing="0" cellpadding="6"
+    style="width:100%; border-collapse:collapse; table-layout:auto;" data-bind="visible: rows().length > 0">
+    <thead>
+      <tr>
+        <th>Stock ID</th>
+        <th>Stock Name</th>
+        <th>Volume</th>
+        <th>Net Invested</th>
+        <th>Current Price</th>
+        <th>Current Value</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: rows">
+      <tr>
+        <td data-bind="text: stockId"></td>
+        <td data-bind="text: stockName"></td>
+        <td data-bind="text: currentVolume"></td>
+        <td data-bind="text: netInvested"></td>
+        <td data-bind="text: currentPrice"></td>
+        <td data-bind="text: currentValue"></td>
+
+        <td>
+          <!-- Show Sell button when not editing -->
+          <!-- ko ifnot: _selling -->
+          <button type="button" class="sell-btn" data-bind="click: $parent.startSell">Sell</button>
+          <!-- /ko -->
+
+          <!-- Inline sell UI when editing -->
+          <!-- ko if: _selling -->
+          <span class="buy-sell-row">
+            <input type="number" min="1" step="1" class="buy-sell-volume" placeholder="Volume"
+              data-bind="value: _sellVolume, attr: { max: currentVolume }, enable: !_isSelling()">
+            <button type="button" class="buy-sell-confirm"
+              data-bind="click: $parent.confirmSell, enable: !_isSelling()">Confirm</button>
+            <button type="button" class="buy-sell-cancel"
+              data-bind="click: $parent.cancelSell, enable: !_isSelling()">Cancel</button>
+            <span data-bind="visible: _isSelling" style="margin-left:8px;">Processing…</span>
+          </span>
+          <div style="color:#d32f2f; margin-top:4px;" data-bind="visible: _sellError, text: _sellError"></div>
+          <!-- /ko -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
